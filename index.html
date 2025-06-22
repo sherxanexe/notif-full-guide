@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Docebo LMS - Configuring Notifications Guide</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+            color: white;
+            padding: 40px 0;
+            margin-bottom: 30px;
+            border-radius: 8px;
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        
+        .header p {
+            font-size: 1.1rem;
+            text-align: center;
+            opacity: 0.9;
+        }
+        
+        .toc {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+        
+        .toc h2 {
+            color: #1e3a8a;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            border-bottom: 3px solid #3b82f6;
+            padding-bottom: 10px;
+        }
+        
+        .toc ul {
+            list-style: none;
+        }
+        
+        .toc ul li {
+            margin-bottom: 8px;
+        }
+        
+        .toc ul li a {
+            color: #3b82f6;
+            text-decoration: none;
+            font-weight: 500;
+            display: block;
+            padding: 8px 0;
+            border-left: 3px solid transparent;
+            padding-left: 15px;
+            transition: all 0.3s ease;
+        }
+        
+        .toc ul li a:hover {
+            border-left-color: #3b82f6;
+            background-color: #f0f9ff;
+            padding-left: 20px;
+        }
+        
+        .content {
+            background: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        h1, h2, h3, h4 {
+            color: #1e3a8a;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+        
+        h1 {
+            font-size: 2.2rem;
+            border-bottom: 3px solid #3b82f6;
+            padding-bottom: 10px;
+        }
+        
+        h2 {
+            font-size: 1.8rem;
+            border-bottom: 2px solid #93c5fd;
+            padding-bottom: 8px;
+        }
+        
+        h3 {
+            font-size: 1.4rem;
+            color: #2563eb;
+        }
+        
+        h4 {
+            font-size: 1.2rem;
+            color: #3b82f6;
+        }
+        
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+        
+        ul, ol {
+            margin-left: 25px;
+            margin-bottom: 15px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+        }
+        
+        .info-box {
+            background: #eff6ff;
+            border-left: 4px solid #3b82f6;
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 0 4px 4px 0;
+        }
+        
+        .warning-box {
+            background: #fef3c7;
+            border-left: 4px solid #f59e0b;
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 0 4px 4px 0;
+        }
+        
+        .tip-box {
+            background: #ecfdf5;
+            border-left: 4px solid #10b981;
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 0 4px 4px 0;
+        }
+        
+        .code {
+            background: #f1f5f9;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            border: 1px solid #e2e8f0;
+        }
+        
+        .screenshot {
+            text-align: center;
+            margin: 25px 0;
+            padding: 20px;
+            background: #f8fafc;
+            border: 2px dashed #cbd5e1;
+            border-radius: 8px;
+        }
+        
+        .screenshot img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 4px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        
+        .screenshot-caption {
+            margin-top: 10px;
+            font-style: italic;
+            color: #64748b;
+            font-size: 0.9em;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        th {
+            background: #1e3a8a;
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+        
+        td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        tr:hover {
+            background: #f8fafc;
+        }
+        
+        .step-number {
+            background: #3b82f6;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        
+        .section {
+            margin-bottom: 40px;
+        }
+        
+        .breadcrumb {
+            background: #f1f5f9;
+            padding: 10px 20px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            font-size: 0.9em;
+            color: #64748b;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 style="color: white;">Docebo LMS</h1>
+            <p>Configuring Notifications - Complete Guide</p>
+        </div>
+        
+        <div class="toc">
+            <h2>Table of Contents</h2>
+            <ul>
+                <li><a href="#introduction">1. Introduction</a></li>
+                <li><a href="#prerequisites">2. Prerequisites</a></li>
+                <li><a href="#view-notification-list">3. View the Notification List</a></li>
+                <li><a href="#create-notification">4. Create a New Notification</a></li>
+                <li><a href="#configure-notification">5. Configure a Notification</a></li>
+                <li><a href="#set-recipients">6. Set the Recipients of a Notification</a></li>
+                <li><a href="#compose-message">7. Compose the Notification Message</a></li>
+                <li><a href="#schedule-notification">8. Schedule a Notification</a></li>
+                <li><a href="#trigger-filters">9. Set Trigger Filters for a Notification</a></li>
+                <li><a href="#activate-notification">10. Activate a Notification</a></li>
+                <li><a href="#editing-notifications">11. Editing Notifications</a></li>
+                <li><a href="#digest-notifications">12. Digest Notifications</a></li>
+                <li><a href="#community-notifications">13. Community Notifications</a></li>
+                <li><a href="#notification-logs">14. Check the Notification Logs</a></li>
+                <li><a href="#tips">15. Tips for Notifications</a></li>
+            </ul>
+        </div>
+        
+        <div class="content">
+            <section id="introduction" class="section">
+                <h1>Introduction</h1>
+                <div class="warning-box">
+                    <strong>Disclaimer:</strong> This article outlines how to use the new notification service, which will be publicly released to all clients at the beginning of 2025. For information about the rollout schedule see the community post: New notification service rollout: Gradual release plan | Community.
+                    <br><br>
+                    → If you see differences between this article and your platform, please refer to the article on Legacy notifications.
+                </div>
+                
+                <p>The Notifications feature lets you configure automated messages that will be sent out when a specified event occurs in the platform. This article covers in detail how to configure and manage notifications on your platform.</p>
+                
+                <h3>Overview of notifications:</h3>
+                <p>When you configure a notification, you have to set up:</p>
+                
+                <ul>
+                    <li><strong>Event type:</strong> The type of platform event that triggers sending of the message. For example, <em>User enrolled in a course</em>.</li>
+                    <li><strong>Recipients:</strong> The intended recipients of the message. These are defined in terms of their relationship to the event. For example, you might want to send a <em>User enrolled in a course</em> notification to the learner who has been enrolled, or to the Instructor of the affected course.</li>
+                    <li><strong>Delivery channel:</strong> The method by which the message will be sent. For example, email, or in-platform notification.</li>
+                    <li><strong>Message:</strong> The actual text of the message to be sent. You will generally want to tailor this to the chosen event type, as well as to the intended recipients.</li>
+                    <li><strong>Timing:</strong> Depending on the type of event, you may have some options for scheduling when the message goes out. For example, immediately at the time of the event, or a certain number of days after the event.</li>
+                    <li><strong>Trigger filters:</strong> You can optionally apply filters to narrow down the cases when the notification is sent. For example, you might want to create a <em>User enrolled in a course</em> notification that goes out only for a subset of courses, or only when a particular subset of users enroll in a course.</li>
+                </ul>
+                
+                <p>The article <em>Notification events and conditions</em> provides a full list of the platform events for which you can configure a notification. For each event type, it also shows you the recipient groups to whom you can direct the notification, and the possible scheduling options.</p>
+            </section>
+            
+            <section id="prerequisites" class="section">
+                <h1>Prerequisites</h1>
+                
+                <h3>Notifications app</h3>
+                <p>The Notifications app must be activated on your platform, as described in the <em>Managing apps & features</em> article. The app is listed in the Docebo additional features vertical tab, which is accessible via the <strong>Add new apps</strong> button from the Admin menu.</p>
+                
+                <h3>Permissions</h3>
+                <p>Power Users must be assigned the relevant notification permissions to be able to view and manage notifications. And they will only have visibility on the notifications pertaining to their assigned resources (groups, branches, courses and learning plans).</p>
+                
+                <h3>Docebosuite domains</h3>
+                <p>For the notification management page to load correctly, your firewall or network infrastructure must not be blocking the <span class="code">*.docebosuite.com</span> domains. Check with your IT department to ensure that <span class="code">*.docebosuite.com</span> domains are placed on the allow list.</p>
+            </section>
+            
+            <section id="view-notification-list" class="section">
+                <h1>View the Notification List</h1>
+                <div class="breadcrumb">Admin menu > Notifications > Manage</div>
+                
+                <p>Select <strong>Admin menu > Notifications > Manage</strong> to access the Notification management page. Here, the <strong>Notifications</strong> tab shows the list of already-configured notifications.</p>
+                
+                <div class="screenshot">
+                    <!-- INSERT IMAGE: Screenshot of notification management page -->
+                    <img src="placeholder_1.png" alt="Screenshot of notification management page showing list of notifications">
+                    <div class="screenshot-caption">Notification management page with list of configured notifications</div>
+                </div>
+                
+                <p>For each notification, you can see its <strong>Event type</strong> and icons representing the configured delivery channels, as well as its <strong>Status</strong>. Only Active notifications can be sent out. Some notifications have a Play (triangle) icon that can be used to manually trigger its sending. You can apply filters or use the search field to help you find a particular notification.</p>
+                
+                <p>The available filters are: Event category, Event type, Attribution (only for Community notifications), and Status (Active, Inactive, or both).</p>
+                
+                <p>To see more details about a notification's configuration, you need to either click its name or select <strong>ellipsis menu > Edit</strong>.</p>
+                
+                <div class="tip-box">
+                    <strong>Tip:</strong> In this list, Power Users will only be able to see the notifications pertaining to their assigned resources. This means that any groups, branches or courses/learning plans set as trigger filters for a notification must also be assigned to the Power User as resource. Otherwise the notification will not be visible.
+                </div>
+                
+                <p>The <strong>Logs</strong> tab lets you check on which notifications have been recently sent out, either automatically or manually. Refer to the chapter, <a href="#notification-logs">Check the notification logs</a>.</p>
+            </section>
+            
+            <section id="create-notification" class="section">
+                <h1>Create a New Notification</h1>
+                
+                <p>To create a new notification:</p>
+                
+                <ol>
+                    <li><span class="step-number">1</span>Select <strong>Admin menu > Notifications > Manage</strong> and click the <strong>+</strong> icon in the top right corner.</li>
+                    <li><span class="step-number">2</span>In the <strong>Create notification</strong> panel that opens, define the platform <strong>Event</strong> for which you want to configure this notification: first select the <strong>Event category</strong> (eg, Courses), and then select the specific <strong>Event type</strong> within that category (eg, ILT event starting).</li>
+                    <li><span class="step-number">3</span>Give the notification a descriptive <strong>Name</strong>, that will help you easily identify it in the list and logs.
+                        <div class="info-box">
+                            → By default, this field is prefilled with the Event type, but remember that you may have multiple notifications for the same Event type (for example, targeting different recipients, or different subsets of courses). So it is useful to provide a distinctive name.
+                        </div>
+                    </li>
+                    <li><span class="step-number">4</span>When you are ready, click <strong>Create and edit</strong> to continue the configuration.
+                        <div class="warning-box">
+                            Note that when you do this the selected event becomes read-only. You cannot later edit a notification to change its event, however all other aspects of its configuration can be subsequently changed.
+                        </div>
+                    </li>
+                    <li><span class="step-number">5</span>Continue as described in the chapter <a href="#configure-notification">Configure a notification</a>.</li>
+                </ol>
+                
+                <div class="tip-box">
+                    <strong>Tip:</strong> You can also create a new notification starting from an existing one. To do this, from the main notification list, open the ellipsis menu alongside a notification and select <strong>Duplicate</strong>.
+                    <br><br>
+                    The event type is copied from the original notification, and read-only. You can then set a Name and select what other parts of its configuration to copy: Timing, Trigger filters, Recipients, Delivery channels.
+                    <br><br>
+                    This is a convenient option, for example, if you want to make multiple copies of the same notification to send to different recipient groups.
+                </div>
+            </section>
+            
+            <section id="configure-notification" class="section">
+                <h1>Configure a Notification</h1>
+                
+                <p>To begin configuring a new notification first complete the steps in the chapter <a href="#create-notification">Create a new notification</a>.</p>
+                
+                <p>To access the configuration page for an existing notification, select <strong>Admin menu > Notifications > Manage</strong> and click the notification's <strong>Name</strong>.</p>
+                
+                <div class="screenshot">
+                    <!-- INSERT IMAGE: Screenshot of notification configuration page -->
+                    <img src="placeholder_2.png" alt="Screenshot of notification configuration page with three tabs">
+                    <div class="screenshot-caption">Notification configuration page showing Properties, Recipients, and Trigger filters tabs</div>
+                </div>
+                
+                <p>On the configuration page for the notification, you will see three tabs: <strong>Properties</strong>, <strong>Recipients</strong>, and <strong>Trigger filters</strong>. Here you can configure all the settings of the notification, apart from its event which is read-only.</p>
+                
+                <p>Proceed as follows:</p>
+                
+                <ul>
+                    <li><strong>Recipients tab:</strong> Set to whom the notification is addressed. See the chapter <a href="#set-recipients">Set the recipients of a notification</a>.</li>
+                    <li><strong>Properties tab > Composition:</strong> Here you can set one or more delivery channels and compose the text of the message that will be sent. See the chapter <a href="#compose-message">Compose the message</a></li>
+                    <li><strong>Properties tab > Details and timing:</strong> Here if desired you can edit the Name of the notification. Remember that the notification event is read-only. Then in the Scheduler area configure the timing of when the notification is sent. See the chapter <a href="#schedule-notification">Schedule a notification</a>.</li>
+                    <li><strong>Triggers and filters tab:</strong> Here you can set which resources (user groups/branches, courses and learning plans) will trigger the notification. See the chapter <a href="#trigger-filters">Set trigger filters for a notification</a>.</li>
+                </ul>
+                
+                <p>At any point you can always click <strong>Save changes</strong> to save your partial configuration.</p>
+            </section>
+            
+            <section id="set-recipients" class="section">
+                <h1>Set the Recipients of a Notification</h1>
+                
+                <p>On the <a href="#configure-notification">configuration page for a notification</a>, select the <strong>Recipients</strong> tab.</p>
+                
+                <p>Here you can select what users "roles" will receive the notification, based on their relationship to the notification event. The options can include: Users, Power Users, Managers, Instructors, Superadmins.</p>
+                
+                <p>For example, you can configure a <em>Certification has expired</em> notification addressed directly to the affected users, or addressed to the Managers of those users.</p>
+                
+                <div class="info-box">
+                    The roles available for selection depend on the event type. The article <em>Notification events and conditions</em> details which recipients are allowed for each notification event. Some notification events may not require setting a recipient role.
+                    <br><br>
+                    Note that you cannot select multiple recipient roles. To do this you will need to configure two separate notifications, with the same event type but with different recipients.
+                    <br><br>
+                    → When doing so, remember that some recipient roles may overlap. For example, the same person might be both a Power User and Manager, and so would receive notifications addressed to both roles.
+                </div>
+                
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Selected Target</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Users</strong></td>
+                            <td>The users affected by the event receive the notification.
+                                <br><br>
+                                Only for the notification <em>New ILT session created</em>, you can further choose between "all users" or a custom selection that targets users not enrolled in any session and/or users in the waiting list of at least one session.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>Power Users</strong></td>
+                            <td>The Power Users whose assigned resources are affected by the event receive the notification.
+                                <br><br>
+                                When selecting this option you can set "All Power User profiles" or specify a particular profile.
+                                <br><br>
+                                <strong>Note:</strong> The Power User recipient role can be set only by a Superadmin. When Power Users configure notifications they cannot set this recipient role, and if it is already set they cannot change it.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>Managers</strong></td>
+                            <td>Managers whose team members are affected by the event receive the notification.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Instructors</strong></td>
+                            <td>The instructors of courses affected by the event receive the notification.
+                                <br><br>
+                                <strong>Note:</strong> This applies to users who are enrolled in an e-learning course with the Instructor enrollment level.
+                                <br><br>
+                                → In the case of ILT courses, instructors are assigned to the course or session but not enrolled in it. Therefore, if you have a notification such as "ILT session starting" with Instructors as recipients, it will NOT be sent to the instructors unless they are also enrolled in the course/session as learners.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>Superadmins</strong></td>
+                            <td>All the Superadmins defined in the platform receive the notification</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Superadmin plus one other role</strong></td>
+                            <td>This option is available only for the notification <em>Subscription plan has been purchased</em>. It lets you set as recipients both the Superadmins plus any one of the other roles.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+            
+            <section id="compose-message" class="section">
+                <h1>Compose the Notification Message</h1>
+                
+                <p>On the <a href="#configure-notification">configuration page for a notification</a>, select <strong>Properties tab > Composition</strong>.</p>
+                
+                <p>Under <strong>Composition</strong> you will see one or more headings, corresponding to the delivery channels enabled on your platform. These may include: Email, Platform notification, mobile push notification.</p>
+                
+                <p><strong>You must set up at least one delivery channel to be able to activate the notification.</strong></p>
+                
+                <div class="screenshot">
+                    <!-- INSERT IMAGE: Screenshot of composition interface -->
+                    <img src="placeholder_3.png" alt="Screenshot of notification composition interface showing email and platform notification options">
+                    <div class="screenshot-caption">Notification composition interface with multiple delivery channels</div>
+                </div>
+                
+                <h3>Email notification</h3>
+                <p>For an email notification, select <strong>Properties tab > Composition > Email</strong>. Then in the panel on the right select the check box <strong>Enable email as delivery channel</strong>.</p>
+                
+                <p>In the <strong>Sender</strong> area, you will need to provide a sender name and email address.</p>
+                
+                <div class="info-box">
+                    <strong>Please note:</strong> The email address you enter for the sender, eg <span class="code">noreply@mydomain.com</span> must have been previously configured in Domain management. See the article configuring email sender domains.
+                </div>
+                
+                <p>Then continue as instructed in <a href="#enter-message-text">enter the message text</a></p>
+                
+                <h3>In-platform notification</h3>
+                <p>Platform notifications are delivered to users within the Notifications area of the platform (bell icon on the header bar).</p>
+                
+                <p>To configure this delivery channel, select <strong>Properties tab > Composition > Platform notification</strong>, and in the panel on the right, select the check box <strong>Enable platform notification as delivery channel</strong>.</p>
+                
+                <p>Then continue as instructed in <a href="#enter-message-text">enter the message text</a></p>
+                
+                <h3>Slack notification</h3>
+                <div class="warning-box">
+                    <strong>Please note:</strong> The current integration Docebo for Slack is incompatible with the new Docebo platform notifications system. If you are not using legacy notifications on your platform, you will not be able to use this integration. Docebo for Slack version 2 will alleviate this issue and is tentatively expected to be released in July 2025.
+                </div>
+                
+                <h3 id="enter-message-text">Enter the message text</h3>
+                <p>In the panel corresponding to the enabled delivery method (Email or Platform notification) you will find a <strong>Message</strong> area in which you can compose the content of your notification, in one or more languages.</p>
+                
+                <h4>Default language</h4>
+                <p>First of all, enter the <strong>Subject</strong> and <strong>Body</strong> of your message in the default language of your platform. The default language is automatically selected, and if the Translate fields option is active it will be marked <span class="code">(default)</span>. You must enter the text at least in this default language to be able to save the notification.</p>
+                
+                <div class="info-box">
+                    → For some notification events, you may find these fields prefilled with a template text that you can customize.
+                    <br><br>
+                    For notifications configured while logged in to an extended enterprise platform, the text must be entered in the default language set for that extended enterprise client, which may differ from the default language of the main platform. In any case, the required default language will be marked <span class="code">(default)</span>.
+                </div>
+                
+                <h4>Formatting</h4>
+                <p>The text in the message Body can also be formatted:</p>
+                <ul>
+                    <li>Using the toolbar buttons for in-platform and email notifications. In addition to the standard text formatting options you can insert links, images and tables. You can also enter the source-code mode to edit the html of the message directly.</li>
+                    <li>For slack notifications there is no toolbar, but you can use markdown to format the text.</li>
+                </ul>
+                
+                <h4>Shortcodes</h4>
+                <p>You can incorporate into your message the shortcodes listed at the bottom of the page.</p>
+                
+                <p>These are tags such as <span class="code">{{course_name}}</span> or <span class="code">{{first_name}}</span> that will be replaced with the relevant data–from the notification event and recipient–when the notification is sent out.</p>
+                
+                <div class="info-box">
+                    The available shortcodes depend on the chosen notification event, and you can only use the ones that are listed.
+                    <br><br>
+                    Click on a shortcode chip to insert it into the current cursor position in the message subject or body.
+                    <br><br>
+                    For more information see the article <em>Shortcodes in notifications</em>.
+                </div>
+                
+                <div class="warning-box">
+                    <strong>Please note:</strong> If the platform default language is changed in the localization tool, then existing notifications that lack a message text in the new default language may not be sent out*.
+                    <br><br>
+                    When you edit these notifications, you will have to populate the message text in the new default language before you can save any changes to them.
+                    <br><br>
+                    * The language used to send the notification is determined by choosing the first of these that is available: recipient user's preferred language > default language of recipient user's extended enterprise platform (if applicable) > default language of the parent (main) platform > English.
+                    <br><br>
+                    And if none of these is available the notification will not be sent.
+                </div>
+                
+                <h4>Other languages</h4>
+                <p>If you want to enter translations of the notification message in other languages, enable the <strong>Translate fields</strong> option. Then, from the <strong>Languages</strong> drop-down list select the desired language and compose and format the message Subject and Body text in that language.</p>
+                
+                <p>→ Repeat these steps until you have composed the notification message for all the required languages.</p>
+                
+                <p>Notifications composed in multiple languages will be delivered to recipients based on their individual language preferences.</p>
+                
+                <h4>Attachments</h4>
+                <p>In <strong>Attachments</strong> area at the bottom, you can include a calendar attachment in the notification. This option is available only for certain event types (those relating to ILT sessions and courses) and only for the email or Slack delivery channels.</p>
+                
+                <h3>Mobile push notification</h3>
+                <p>Mobile push notifications are delivered to users of the Go.learn mobile app or of the branded mobile app, provided they have enabled this on their device.</p>
+                
+                <div class="info-box">
+                    Please note that the mobile push delivery channel is available only for a subset of event types. You will see the Mobile push notification option only for the following, supported event types:
+                    <br><br>
+                    <strong>Course:</strong> User approval, User approved into ILT session, User enrolled in ILT session, User enrolled in a course, ILT session starting, Learner completed a course, ILT event starting, ILT session changed, ILT session deleted, Learner has yet to complete a course, Assignment has been evaluated, Instructor evaluated a test question, New ILT session created, User was declined from an ILT session
+                    <br><br>
+                    <strong>Learning plans:</strong> User has been enrolled in a learning plan, Learner has completed a learning plan, Learning plan enrollment expiring, New content in learning plan, User was unenrolled from a learning plan
+                </div>
+                
+                <p>To configure the mobile push delivery channel, select <strong>Properties tab > Composition > Mobile push notification</strong>, and in the panel on the right select the check box <strong>Enable mobile push notification as delivery channel</strong>.</p>
+                
+                <p>Now you can enter a <strong>Title</strong> (maximum 50 characters) and a plain text <strong>Message</strong> (maximum 150 characters).</p>
+                
+                <p>You can include shortcodes only in the message text. Please consider that the text must remain within 150 characters even after the shortcodes are replaced by their values. Otherwise any excess text will be trimmed in the notification that users receive.</p>
+                
+                <p>The <strong>App URL</strong> section at the bottom shows the mobile app link that the notification will open. This field is read-only and is automatically filled based on the event type.</p>
+                
+                <p>As for the other notification channels, you can enable the <strong>Translate fields</strong> option to enter the mobile push notification message in other languages.</p>
+                
+                <div class="tip-box">
+                    <strong>Tip:</strong> Depending on the recipient's mobile device settings, if multiple similar notifications arrive in a short time, these may be stacked or collapsed into a single one. For example, if a (non-digest) <em>User enrolled in a course</em> notification is configured to be sent to Power Users, and 4 users enroll in the course, the Power User might receive only a single message, rather than 4 separate ones as expected.
+                    <br><br>
+                    → This can be avoided by inserting shortcodes, such as the enrolled user's name, to ensure the messages are all distinct.
+                </div>
+            </section>
+            
+            <section id="schedule-notification" class="section">
+                <h1>Schedule a Notification</h1>
+                
+                <p>On the <a href="#configure-notification">configuration page for a notification</a>, select the <strong>Properties tab > Details and timing</strong>. In the <strong>Scheduler</strong> area you will see the available timing options for your chosen notification event.</p>
+                
+                <p>The timing options for each event type are listed in the article <em>Notification events and conditions</em>.</p>
+                
+                <p>Depending on the event type, there may be only one fixed scheduling option, or you may be offered a choice between two or more of the following: <strong>At the time of the event</strong>, <strong>Before the event</strong>, <strong>After the event</strong>, <strong>Manually</strong>, and <strong>Every</strong>.</p>
+                
+                <p>For many of the scheduling options you can set the exact <strong>Time</strong> of day when you want the notification to be sent, and also specify the relevant <strong>Time zone</strong>.</p>
+                
+                <div class="info-box">
+                    <strong>Tips:</strong> The time must be entered in hh:mm am/pm format. For example <span class="code">08:15 am</span>.
+                    <br><br>
+                    → Note that in am/pm format <span class="code">12:00 am</span> corresponds to 00:00 in 24-hour time (midnight, the beginning of the day) while <span class="code">12:00 pm</span> corresponds to 12:00 in 24-hour time (noon, the middle of the day).
+                    <br><br>
+                    In the scheduler, when you specify a Time frame the allowed ranges are as follows: 1→72 hours, 1→365 days, 1→52 weeks, 1→24 months.
+                </div>
+                
+                <div class="screenshot">
+                    <!-- INSERT IMAGE: Screenshot of scheduler interface -->
+                    <img src="placeholder_4.png" alt="Screenshot of notification scheduler interface showing timing options">
+                    <div class="screenshot-caption">Notification scheduler interface with timing configuration options</div>
+                </div>
+                
+                <h3>At the time of the event</h3>
+                <p>The notification will be sent to recipients as soon as the triggering action has been completed in the platform. For example, in the case of the <em>User bought a course</em> event, with this setting the notification will be sent out as soon as the user completes the purchase.</p>
+                
+                <div class="warning-box">
+                    <strong>Please note:</strong> In some cases, the "at the time" notification may be delayed somewhat with respect to the event. For example, the system monitors checklists for updates every three hours, so that a checklist notification could be delayed up to three hours from the actual event.
+                </div>
+                
+                <h3>Before the event</h3>
+                <p>This option is available for events due to occur at a known time. The notification will be sent to recipients a certain amount of time before the event, e.g. before a webinar or ILT session begins.</p>
+                
+                <p>You can set how many hours, days, weeks or months in advance the notification will be sent.</p>
+                
+                <p>If you set days, weeks or months you can also schedule the time of day when you want the notification to be sent, and specify the relevant time zone.</p>
+                
+                <h4>Hours before the event:</h4>
+                <p>The scheduler will send the notification the specified number of hours before the event, also taking minutes into account. For example, suppose an ILT session is due to begin at 10:25am:</p>
+                <ul>
+                    <li>If you set the notification for two hours before the event it will be sent at 8.25am.</li>
+                </ul>
+                
+                <div class="tip-box">
+                    <strong>Tip:</strong> The scheduler checks for events at the start of every hour, and so will not work as expected if you:
+                    <ul>
+                        <li>Create the notification within the hour when it should be sent. For the above example, if you create the notification at 8:05am it will not be sent (at 8am, the system has already checked for events in the time span between 10-11am)</li>
+                        <li>Change the event time during the hour when the original notification was due to go out. For the above example, you would need to change the ILT session time before 8am.</li>
+                    </ul>
+                </div>
+                
+                <h4>Days before the event</h4>
+                <p>For days before the event, each day at the scheduled time the system will look for events occurring within a 24-hour time span that is the specified number of days away.</p>
+                
+                <p>For example, if you set <strong>2 days before the event</strong> the time span is between 48 and 72 hours in the future.</p>
+                
+                <p>The lower limit is inclusive and the upper limit is exclusive. So in this example:</p>
+                <p><span class="code">48hrs =< time to the event < 72hrs</span></p>
+                
+                <p>The hours to the event are counted from the time you set for sending the notification.</p>
+                
+                <div class="tip-box">
+                    <strong>Tip:</strong> The "days before the event" that you set may not correspond to calendar days.
+                    <br><br>
+                    Suppose an ILT session is starting on Wednesday at 7am, and you configured a notification for 1 day before the event, to be sent at 8am. One day before the event means between 24 and 48 hours away:
+                    <br><br>
+                    <span class="code">24hrs =< time to the event < 48hrs</span>
+                    <br><br>
+                    → On Monday at 8am the event is 47 hours away, so the notification will be sent. Even though Monday is two calendar days before the event.
+                    <br><br>
+                    → If the notification time was instead set for 7am, then the notification would go out on Tuesday (one calendar day before the event).
+                    <br><br>
+                    Generally speaking, the "days before the event" to correspond to calendar days, if the notification time is earlier than (or equal to) the event time. Otherwise, the notification will be sent one "extra" calendar day in advance.
+                </div>
+                
+                <h4>Weeks before the event</h4>
+                <p>For weeks before the event, the logic is the same as for days before, with number of days = number of weeks * 7.</p>
+                
+                <p>For example, for one week before the event, every day at the scheduled time the system will look for events in the 24-hour time span between 7 days (168 hrs) and 8 days (182 hrs) in the future.</p>
+                
+                <div class="tip-box">
+                    <strong>Tip:</strong> The notification will not necessarily be sent on the same day of the week as the event. For example if the event is on Wednesday at 10am and you set a notification for 1 week before at 9am, then the notification will be sent on the preceding Wednesday. But if you set the notification for 11am, it will be sent one day sooner, on the Tuesday.
+                </div>
+                
+                <h4>Months before the event</h4>
+                <p>For months before the event, every day at the scheduled time the system will look for events in a 24-hour time span that is the specified number of months in the future.</p>
+                
+                <p><strong>Example:</strong> There is a notification scheduled for one month before the event, at 9am. Every day at the scheduled time the system looks at the current date (eg March 2nd, 9am) and increments the month by one (eg April 2nd, 9am): Then it looks for events in the 24-hour time span between April 2nd, 9am and April 3rd, 8:59:59am.</p>
+                
+                <div class="warning-box">
+                    <strong>Please note:</strong> On March 31st, to increment the month by one the system will take April 30th (ie the last day of that month), and so will look for events in the same time span that it considered on March 30th. So in case of events occurring in the final days of the month, the notification may be sent out on two consecutive days.
+                </div>
+                
+                <h3>After the event</h3>
+                <p>The notification will be sent to recipients a certain amount of time after the event or action is completed, e.g. after a learner has completed a course.</p>
+                
+                <p>You can set how many hours, days, weeks or months after the event the notification will be sent. If you set days, weeks or months you can also set the time of day (and time zone) when you want it to be sent.</p>
+                
+                <h4>Hours after the event</h4>
+                <p>If you use the hours option the notification will be delayed for the exact number of hours that you specify from the event, taking also minutes into account.</p>
+                
+                <h4>Days after the event</h4>
+                <p>Note that, for days after the event, the delay is computed as follows:</p>
+                <ul>
+                    <li>Move forward the specified number of days (24-hour periods) from the date and time of the event.</li>
+                    <li>Then send the notification out at the first next occurrence of the scheduled time you set in the time field.</li>
+                </ul>
+                
+                <div class="info-box">
+                    → An exception to the logic described in this section is the <em>Learner has yet to complete a course</em> notification, which computes the delay based on "human days". So from the date of the event it moves forward the specified number of days, and on that day sends out the notification at the scheduled time.
+                </div>
+                
+                <div class="tip-box">
+                    <strong>Tip:</strong> If the notification time is earlier than the event time, the notification will go out one day later than you expect. For example, suppose an event occurs on Monday at 3pm and you configure a notification for 4 days after the event at 10am:
+                    <ul>
+                        <li>4 days after the event is Friday at 3pm</li>
+                        <li>but the next occurrence of the scheduled time is Saturday at 10am, and this is when the notification is sent.</li>
+                    </ul>
+                </div>
+                
+                <h4>Weeks after the event</h4>
+                <p>The option weeks after the event follows a similar logic to days after the event. From the date and time of the event, the scheduler moves forward by a delay = (number of weeks) * (7days/week) * (24 hrs/day). And then sends the notification at the first next occurrence of the scheduled time.</p>
+                
+                <div class="tip-box">
+                    <strong>Tip:</strong> The notification will not necessarily be sent on the same day of the week as the event. For example if the event is on Monday at 11am and you set a notification for 1 week after at 9am, then the notification will be sent on the Tuesday of the following week. This extra day occurs if the notification time is earlier than the time of the event.
+                </div>
+                
+                <h4>Months after the event</h4>
+                <p>In the case of months after the event, the scheduler moves forward the specified number of months and then sends the notification at the first next occurrence of the scheduled time.</p>
+                
+                <p><strong>For example:</strong></p>
+                <ul>
+                    <li>For an event on 3 June at 8am, four months after the event is 3 October at 8am.</li>
+                    <li>However, for an event on 31 March, one month after the event is 30 April (if the month is shorter, the scheduler anyway takes the last day)</li>
+                </ul>
+                
+                <p>As mentioned for days and weeks after the event, the notification will go out an "extra" day later if the notification time is earlier than the event time.</p>
+                
+                <h3>Manually</h3>
+                <p>Some notifications can be set to be sent <strong>Manually</strong>. This means they are never sent automatically by the scheduler. They can instead be manually triggered by clicking the "play" icon in the notification list.</p>
+                
+                <h3>Every</h3>
+                <p>This is an option available for digest notifications, and allows the notification to be sent on a repetitive basis: hourly, daily, weekly, or monthly.</p>
+                
+                <p>For more information see the chapter on <a href="#digest-notifications">Digest notifications</a>.</p>
+                
+                <h3>Notes about scheduling notifications</h3>
+                <ul>
+                    <li>It is not possible to resend scheduled notifications.</li>
+                    <li>Scheduled notifications are sent periodically and are not triggered at the time of the event. These notifications leverage a job that is executed on a scheduled basis (the frequency is dependent on the notification's configuration).</li>
+                </ul>
+            </section>
+            
+            <section id="trigger-filters" class="section">
+                <h1>Set Trigger Filters for a Notification</h1>
+                
+                <p>Trigger filters allow you to specify for which users and for which content the notification should go out.</p>
+                
+                <div class="info-box">
+                    → For example, you might want to send a <em>Learner has completed a course</em> notification only when learners of a specific branch complete a course. Or you might want to send it only for certain courses.
+                </div>
+                
+                <h3>Check the trigger filters</h3>
+                <p>On the <a href="#configure-notification">configuration page for a notification</a>, select the <strong>Trigger filters</strong> tab. Here you can check any already-configured trigger filters, using the vertical navigation under <strong>Trigger type</strong>.</p>
+                
+                <div class="screenshot">
+                    <!-- INSERT IMAGE: Screenshot of trigger filters interface -->
+                    <img src="placeholder_5.png" alt="Screenshot of trigger filters configuration interface">
+                    <div class="screenshot-caption">Trigger filters configuration interface showing user groups, branches, and courses options</div>
+                </div>
+                
+                <h4>Users:</h4>
+                <p>This part shows the user groups and/or user branches that can trigger this notification. If multiple groups or branches are set the logic between them is OR, meaning it is enough for a user to belong to at least one of them.</p>
+                
+                <div class="info-box">
+                    → When <strong>no groups or branches are set</strong>: For a notification configured by a Superadmin, it means that <strong>all users</strong> can trigger the notification. But for a notification configured by Power User, it means that <strong>no users</strong> can trigger the notification.
+                </div>
+                
+                <h4>Courses and learning plans:</h4>
+                <p>This part shows the content that can trigger this notification.</p>
+                
+                <div class="info-box">
+                    → When <strong>no courses or learning plans are set</strong>: For a notification configured by a Superadmin, it means that <strong>all content</strong> can trigger the notification. But for a notification configured by Power User, it means that <strong>no content</strong> can trigger the notification.
+                </div>
+                
+                <h3>Add a trigger filter</h3>
+                <p>To add a trigger filter click the <strong>+</strong> icon in the top right corner. In the <strong>Add trigger filters</strong> panel select the type of trigger filter to apply (Groups, Branches, or Courses and learning plans) and click <strong>Next</strong>. Then make the selection according to the resource type you have selected.</p>
+                
+                <ul>
+                    <li><strong>Groups:</strong> Select the check box alongside the user groups that should trigger the notification.</li>
+                    <li><strong>Branches:</strong> Select the check box alongside each of the user branches that should trigger the notification. Click the check box again to include/exclude descendants.</li>
+                    <li><strong>Courses and learning plans:</strong> Select the check box alongside each course or learning plan that should trigger the notification.</li>
+                </ul>
+                
+                <p>If you are a Power User you will only be able to see here the groups, branches, or courses and learning plans that are assigned to you as resource.</p>
+                
+                <h3>Trigger filters and visibility</h3>
+                
+                <h4>When a Superadmin creates a notification:</h4>
+                <ul>
+                    <li>It applies by default to all users and to all courses and learning plans.</li>
+                    <li>This means that, if no trigger filters are applied, the notification will go out for all occurrences of the chosen event.</li>
+                    <li>Trigger filters can be applied to restrict the notification to a particular set of users, or to a subset of the learning content, or both.</li>
+                    <li>The notification can be activated even if no trigger filters are applied.</li>
+                </ul>
+                
+                <h4>When a Power User creates a notification:</h4>
+                <ul>
+                    <li>It applies by default to no users and to no courses or learning plans. This means that, in this initial state, the notification would not go out for any occurrence of the chosen event.</li>
+                    <li>Trigger filters can be applied to specify for which users and for which courses and learning plans the notification should be sent.</li>
+                    <li>At least one trigger filter must be applied to be able to activate the notification in this case.</li>
+                </ul>
+                
+                <p>A Power User will have visibility of a notification only if they are assigned all the resources set as trigger filters for it. For details about this see the article on <em>Power User permissions for notifications</em>. A Power User will lose visibility of a notification, even one they created themselves, if someone else edits it to add trigger filters not assigned to the Power User.</p>
+            </section>
+            
+            <section id="activate-notification" class="section">
+                <h1>Activate a Notification</h1>
+                
+                <p>On the Notification list page, the <strong>Status</strong> column shows whether each notification is activated or deactivated.</p>
+                
+                <p>To activate (or deactivate) a notification, click the <strong>&lt;notification name&gt;</strong> to open its configuration page, then use the button in the bottom right hand side to switch the status between <strong>Active</strong> and <strong>Inactive</strong>.</p>
+                
+                <div class="warning-box">
+                    <strong>Note:</strong> To be able to activate a notification, it must have at least one delivery channel set.
+                    <br><br>
+                    In addition, Power Users must set at least one trigger filter to be able to activate a notification, because no trigger filters means "no users and no content". However Superadmins can activate a notification even with no trigger filters applied, because in their case this means "all users and all content".
+                </div>
+            </section>
+            
+            <section id="editing-notifications" class="section">
+                <h1>Editing Notifications</h1>
+                
+                <div class="warning-box">
+                    It is strongly recommended to deactivate a notification before you edit its configuration.
+                    <br><br>
+                    Every notification's modification will trigger a scheduled job deletion and recreation.
+                </div>
+            </section>
+            
+            <section id="digest-notifications" class="section">
+                <h1>Digest Notifications</h1>
+                
+                <p>Digest notifications group multiple notifications about the same type of event into one larger notification. For example, instead of receiving seven separate notifications about courses that are not yet completed, the user will receive one notification with a list of the courses that they have yet to complete.</p>
+                
+                <p>The available digest notifications are listed in the <em>Notification events and conditions</em> article.</p>
+                
+                <p>Digest notifications are configured similarly to other notifications. When you compose the message body, the shortcode for items being listed in the digest must be placed between <span class="code">{{#items}}</span> and <span class="code">{{/items}}</span> tags. For example, for the <em>Digest: User enrolled in a course</em>:</p>
+                
+                <div class="code">
+                    Hello {{first_name}},<br><br>
+                    You have been enrolled in the following courses:<br><br>
+                    {{#items}}<br>
+                    {{course_name}} on {{subscribed_at}}. This course expires on {{expire_at}} and can be accessed here: {{course_link}}<br>
+                    {{/items}}<br><br>
+                    Enjoy!
+                </div>
+                
+                <div class="info-box">
+                    <strong>Please note:</strong> The courses in the digest will be listed in order of course creation.
+                </div>
+                
+                <h3>Manually and Every options</h3>
+                <p>When you schedule the notification sending, depending on the type of digest, the available options may be <strong>Every</strong> and/or <strong>Manually</strong>.</p>
+                
+                <p>With the <strong>Manually</strong> option, the digest notification can be sent out manually, and will not be scheduled automatically.</p>
+                
+                <p>In the case of <strong>Every</strong> you can set an hourly, daily, weekly, or monthly frequency for when the digest is sent out. The digest will contain items pertaining to that time frame. For example, <em>Digest: User enrolled in a course</em> set with a weekly frequency will contain enrollments of the past week, set with a monthly frequency will contain enrollments of the past month, etc.</p>
+                
+                <ul>
+                    <li><strong>Every hour:</strong> The digest will be sent once an hour.</li>
+                    <li><strong>Every day:</strong> The digest will be sent once a day. You can specify the time of day and time zone.</li>
+                    <li><strong>Every week:</strong> The digest will be sent once a week. You can set the day of the week (eg, Wednesday) and the time of day and time zone.</li>
+                    <li><strong>Every month:</strong> The digest will be sent once a month. You can set the day of the month (eg, the 10th), and the time of day and time zone.
+                        <br><br>
+                        Note that if you set the 31st, on months with fewer days the notification will still be sent on the last day of the month.
+                    </li>
+                </ul>
+                
+                <h3>Extra settings tab</h3>
+                <p>Only for the <em>Digest: Course has expired</em> notification, there is an <strong>Extra settings</strong> tab where you can specify what courses to include in the digest notification. Please note that the frequency for sending the digest is still that set in the Properties tab, with the Every option.</p>
+                
+                <p>You can choose to include:</p>
+                <ul>
+                    <li><strong>Courses expiring between this notification and the next scheduled one:</strong> For example, if the digest is sent every week, it will list all the courses expiring in the week between the current digest and the next.</li>
+                    <li><strong>Courses expiring within a time frame after the notification is sent:</strong> The digest will list the courses expiring within the specified number of days. (eg with 3 the digest will list all the courses expiring in 1, 2 or 3 days).</li>
+                    <li><strong>Courses expiring an exact number of days after the notification is sent:</strong> The digest will list the courses whose expiration is an exact number of days aways (eg with 3 the digest will list all courses that expire in exactly 3 days).</li>
+                </ul>
+                
+                <div class="screenshot">
+                    <!-- INSERT IMAGE: Screenshot of digest extra settings -->
+                    <img src="placeholder_6.png" alt="Screenshot of digest notification extra settings interface">
+                    <div class="screenshot-caption">Extra settings tab for digest notifications showing course expiration options</div>
+                </div>
+            </section>
+            
+            <section id="community-notifications" class="section">
+                <h1>Community Notifications</h1>
+                
+                <p>The Notification management page also shows any available Community notifications. These types of notifications are not created manually like the others. Instead, they are enabled as a set, for a given community, from the Community management area.</p>
+                
+                <p>To do this:</p>
+                <ol>
+                    <li><span class="step-number">1</span>Select <strong>Admin menu > COMMUNITIES > Communities hub</strong>. This will open the Community management page, listing all the communities configured on the platform.</li>
+                    <li><span class="step-number">2</span>Click the name of a community to open its configuration page. Then in the <strong>Settings</strong> tab scroll down to the <strong>Notifications</strong> section.</li>
+                    <li><span class="step-number">3</span>Here you can click <strong>Create community notifications</strong> to automatically create the set of preconfigured notifications for this particular community. If this action is not available it means it has been done previously, and those notifications already exist.</li>
+                </ol>
+                
+                <div class="screenshot">
+                    <!-- INSERT IMAGE: Screenshot of community management interface -->
+                    <img src="placeholder_7.png" alt="Screenshot of community management interface showing notifications section">
+                    <div class="screenshot-caption">Community management interface with notifications creation option</div>
+                </div>
+                
+                <p>On the Notification management page, you can find the set of automatically created Community notifications by filtering for <strong>Event category = Communities</strong> and <strong>Attribution = &lt;name of the community&gt;</strong>.</p>
+                
+                <div class="info-box">
+                    Unlike other notifications, Community notifications have only a <strong>Properties</strong> tab. You can activate/deactivate them and edit the message composition. However you cannot delete or duplicate these notifications.
+                </div>
+                
+                <p>For more information see the article <em>Community notifications</em>.</p>
+            </section>
+            
+            <section id="notification-logs" class="section">
+                <h1>Check the Notification Logs</h1>
+                
+                <p>From the main notification management page, the <strong>Logs</strong> tab lets you check all the notifications that have been sent out. By default when you open this tab it shows you the current page. But you can set a filter to view a different date range:</p>
+                
+                <div class="warning-box">
+                    The date range you set cannot exceed 14 days, and it cannot be more than 3 months in the past.
+                </div>
+                
+                <div class="screenshot">
+                    <!-- INSERT IMAGE: Screenshot of notification logs -->
+                    <img src="placeholder_8.png" alt="Screenshot of notification logs interface showing sent notifications">
+                    <div class="screenshot-caption">Notification logs interface displaying recently sent notifications with filtering options</div>
+                </div>
+            </section>
+            
+            <section id="tips" class="section">
+                <h1>Tips for Notifications</h1>
+                
+                <ul>
+                    <li><strong>4-byte Unicode characters:</strong> 4-byte Unicode characters are not supported by the platform when creating or editing a notification.</li>
+                    
+                    <li><strong>Long notifications:</strong> Notifications have a character limit of 65535 characters. Any notification that is generated that exceeds this limitation will not be displayed correctly. Please note that this character limit is a limit of the number of characters received by the notification system. As such, content which is not displayed, such as HTML code and converted shortcodes, are also counted towards this limitation.</li>
+                    
+                    <li><strong>Resend the welcome notification:</strong> If you want to resend the welcome notification, first of all check that you have an active notification configured for the event "User has been created (by administrator)". Then select <strong>Admin menu > E-learning > Users</strong>. On the Users main page, select all the relevant users, click the <strong>Choose action</strong> button at the bottom of the page and select <strong>Send activation notification</strong>.</li>
+                    
+                    <li><strong>Enrolling users into unpublished courses:</strong> When enrolling users into courses that are not yet published, decide on whether to send notifications for those enrollments ahead of time and be sure to turn off any notifications for enrollment prior to enrolling users. Once done with enrollment, you can re-activate the notifications. This can occur when you need to enroll users into unpublished courses to keep an enrollment history.</li>
+                    
+                    <li><strong>ICS files:</strong> ICS files, opened with Outlook, will open in a new calendar and not in the default calendar.</li>
+                </ul>
+            </section>
+        </div>
+    </div>
+</body>
+</html>
