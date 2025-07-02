@@ -293,7 +293,7 @@
         <!-- Russian Content -->
         <div id="ru-content" class="lang-content active">
             <div class="header">
-                <h1>Docebo LMS</h1>
+                <h1 style="color: white;">Docebo LMS</h1>
                 <p>Настройка уведомлений (Notifications) - Полное руководство</p>
             </div>
             
@@ -301,32 +301,26 @@
                 <h2>Содержание</h2>
                 <ul>
                     <li><a href="#introduction">1. Введение</a></li>
-                    <li><a href="#prerequisites">2. Предварительные требования</a></li>
-                    <li><a href="#view-notification-list">3. Просмотр списка уведомлений</a></li>
-                    <li><a href="#create-notification">4. Создание нового уведомления</a></li>
-                    <li><a href="#configure-notification">5. Настройка уведомления</a></li>
-                    <li><a href="#set-recipients">6. Установка получателей уведомления</a></li>
-                    <li><a href="#compose-message">7. Составление сообщения уведомления</a></li>
-                    <li><a href="#schedule-notification">8. Планирование уведомления</a></li>
-                    <li><a href="#trigger-filters">9. Установка фильтров триггеров для уведомления</a></li>
-                    <li><a href="#activate-notification">10. Активация уведомления</a></li>
-                    <li><a href="#editing-notifications">11. Редактирование уведомлений</a></li>
-                    <li><a href="#digest-notifications">12. Digest уведомления (сводные)</a></li>
-                    <li><a href="#community-notifications">13. Community уведомления (сообщества)</a></li>
-                    <li><a href="#notification-logs">14. Проверка логов уведомлений</a></li>
-                    <li><a href="#tips">15. Советы по уведомлениям</a></li>
+                    <li><a href="#view-notification-list">2. Просмотр списка уведомлений</a></li>
+                    <li><a href="#create-notification">3. Создание нового уведомления</a></li>
+                    <li><a href="#configure-notification">4. Настройка уведомления</a></li>
+                    <li><a href="#set-recipients">5. Установка получателей уведомления</a></li>
+                    <li><a href="#compose-message">6. Составление сообщения уведомления</a></li>
+                    <li><a href="#schedule-notification">7. Планирование уведомления</a></li>
+                    <li><a href="#trigger-filters">8. Установка фильтров триггеров для уведомления</a></li>
+                    <li><a href="#activate-notification">9. Активация уведомления</a></li>
+                    <li><a href="#editing-notifications">10. Редактирование уведомлений</a></li>
+                    <li><a href="#digest-notifications">11. Digest уведомления (сводные)</a></li>
+                    <li><a href="#community-notifications">12. Community уведомления (сообщества)</a></li>
+                    <li><a href="#notification-logs">13. Проверка логов уведомлений</a></li>
+                    <li><a href="#tips">14. Советы по уведомлениям</a></li>
                 </ul>
             </div>
             
             <div class="content">
                 <section id="introduction" class="section">
                     <h1>Введение</h1>
-                    <div class="warning-box">
-                        <strong>Отказ от ответственности:</strong> Данная статья описывает, как использовать новый сервис уведомлений (notification service), который будет публично выпущен для всех клиентов в начале 2025 года. Для получения информации о графике внедрения см. пост в сообществе: New notification service rollout: Gradual release plan | Community.
-                        <br><br>
-                        → Если вы видите различия между данной статьей и вашей платформой, обратитесь к статье о Legacy notifications (устаревших уведомлениях).
-                    </div>
-                    
+            
                     <p>Функция Notifications (уведомления) позволяет настраивать автоматические сообщения, которые будут отправляться при возникновении определенных событий на платформе. Данная статья подробно описывает, как настраивать и управлять уведомлениями на вашей платформе.</p>
                     
                     <h3>Обзор уведомлений:</h3>
@@ -384,7 +378,7 @@
                     
                     <p>Чтобы создать новое уведомление:</p>
                     
-                    <ol>
+                    <ol style="counter-reset: none; list-style: none; padding-left: 0;">
                         <li><span class="step-number">1</span>Выберите <strong>Admin menu > Notifications > Manage</strong> и нажмите иконку <strong>+</strong> в верхнем правом углу.</li>
                         <li><span class="step-number">2</span>В открывшейся панели <strong>Create notification (создать уведомление)</strong> определите <strong>Event (событие)</strong> платформы, для которого вы хотите настроить это уведомление: сначала выберите <strong>Event category (категорию события)</strong> (например, Courses), а затем выберите конкретный <strong>Event type (тип события)</strong> в этой категории (например, ILT event starting).</li>
                         <li><span class="step-number">3</span>Дайте уведомлению описательное <strong>Name (имя)</strong>, которое поможет вам легко идентифицировать его в списке и логах.
@@ -533,10 +527,7 @@
                     
                     <p>Затем продолжите, как указано в <a href="#enter-message-text">введите текст сообщения</a></p>
                     
-                    <h3>Slack уведомление</h3>
-                    <div class="warning-box">
-                        <strong>Обратите внимание:</strong> Текущая интеграция Docebo for Slack несовместима с новой системой уведомлений платформы Docebo. Если вы не используете устаревшие уведомления на своей платформе, вы не сможете использовать эту интеграцию. Docebo for Slack версия 2 решит эту проблему и предварительно ожидается к выпуску в июле 2025 года.
-                    </div>
+                    
                     
                     <h3 id="enter-message-text">Введите текст сообщения</h3>
                     <p>В панели, соответствующей включенному методу доставки (Email или Platform notification), вы найдете область <strong>Message (сообщение)</strong>, в которой можете составить содержимое вашего уведомления на одном или нескольких языках.</p>
