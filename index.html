@@ -315,6 +315,65 @@
             font-size: 1.1rem;
             font-weight: 600;
         }
+
+        .detailed-guide-section {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            border: 2px solid #3b82f6;
+            border-radius: 12px;
+            padding: 30px;
+            margin: 40px 0;
+            text-align: center;
+            box-shadow: 0 4px 16px rgba(59, 130, 246, 0.1);
+        }
+
+        .detailed-guide-section h3 {
+            color: #1e3a8a;
+            font-size: 1.6rem;
+            margin-bottom: 15px;
+            margin-top: 0;
+        }
+
+        .detailed-guide-section p {
+            color: #475569;
+            font-size: 1.1rem;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        .detailed-guide-button {
+            background: linear-gradient(135deg, #3b82f6 0%, #1e3a8a 100%);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+        }
+
+        .detailed-guide-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(59, 130, 246, 0.4);
+            background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+        }
+
+        .detailed-guide-button:active {
+            transform: translateY(0);
+        }
+
+        .detailed-guide-icon {
+            font-size: 1.3rem;
+            margin-right: 8px;
+        }
+
+        .external-link-icon {
+            font-size: 0.9rem;
+            margin-left: 5px;
+        }
     </style>
 </head>
 <body>
@@ -595,6 +654,17 @@
                         </ul>
                     </div>
                 </section>
+
+                <!-- Detailed Guide Section -->
+                <div class="detailed-guide-section">
+                    <h3>📚 Нужна более подробная инструкция?</h3>
+                    <p>Для получения полного руководства с дополнительными примерами, пошаговыми скриншотами и решением проблем, воспользуйтесь официальной документацией Docebo.</p>
+                    <a href="https://help.docebo.com/hc/en-us/articles/360020126259-Configuring-notifications" target="_blank" class="detailed-guide-button">
+                        <span class="detailed-guide-icon">📖</span>
+                        Перейти к детальному гайду
+                        <span class="external-link-icon">🔗</span>
+                    </a>
+                </div>
             </div>
         </div>
 
@@ -643,6 +713,17 @@
                 </section>
                 
                 <p>English content follows the same structure as Russian content...</p>
+
+                <!-- Detailed Guide Section for English -->
+                <div class="detailed-guide-section">
+                    <h3>📚 Need More Detailed Instructions?</h3>
+                    <p>For a complete guide with additional examples, step-by-step screenshots, and troubleshooting solutions, use the official Docebo documentation.</p>
+                    <a href="https://help.docebo.com/hc/en-us/articles/360020126259-Configuring-notifications" target="_blank" class="detailed-guide-button">
+                        <span class="detailed-guide-icon">📖</span>
+                        Go to Detailed Guide
+                        <span class="external-link-icon">🔗</span>
+                    </a>
+                </div>
             </div>
         </div>
     </div>
